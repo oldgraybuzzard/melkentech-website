@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
+/* Font loading optimizations */
+@font-face {
+  font-family: 'Geist-fallback';
+  size-adjust: 97.5%;
+  ascent-override: 93%;
+  src: local(Arial);
+}
+
 :root {
+  --font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  
+  /* Light mode variables */
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Theme Colors */
+  --color-primary: #4B0082;
+  --color-primary-dark: #2D004D;
+  --color-secondary: #B084CC;
+  --color-accent: #ACC3A6;
+  --color-neutral: #EFEFEF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark mode variables */
+:root[class~="dark"] {
+  --background: #111827; /* gray-900 */
+  --foreground: #f3f4f6; /* gray-100 */
+  
+  /* Adjusted theme colors for dark mode */
+  --color-primary: #B084CC;
+  --color-primary-dark: #8A63A9;
+  --color-secondary: #4B0082;
+  --color-accent: #ACC3A6;
+  --color-neutral: #1f2937; /* gray-800 */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Apply fonts with fallbacks */
+body {
+  font-family: var(--font-geist-sans), 'Geist-fallback', var(--font-fallback);
+}
+
+code, pre {
+  font-family: var(--font-geist-mono), 'Courier New', Courier, monospace;
 }
