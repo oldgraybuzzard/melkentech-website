@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
 import BlogSkeleton from '@/components/BlogSkeleton';
 import BlogPostCard from '@/components/BlogPostCard';
 import type { BlogPost } from '@/types/blog';
@@ -63,11 +62,16 @@ export default function Blog() {
             No blog posts found.
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <BlogPostCard key={post.slug} post={post} index={index} />
-            ))}
-          </div>
+          <>
+            <h2 className="text-2xl font-semibold text-center mb-8 text-gray-900 dark:text-white">
+              Latest Posts
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post, index) => (
+                <BlogPostCard key={post.slug} post={post} index={index} />
+              ))}
+            </div>
+          </>
         )}
       </div>
     </main>

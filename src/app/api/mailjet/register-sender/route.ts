@@ -6,7 +6,7 @@ const mailjet = new Client({
   apiSecret: process.env.MAILJET_API_SECRET!
 });
 
-export async function POST(request: Request) {
+export async function POST() {
   try {
     const senderEmail = process.env.MAILJET_SENDER_EMAIL;
     const senderName = process.env.MAILJET_SENDER_NAME;

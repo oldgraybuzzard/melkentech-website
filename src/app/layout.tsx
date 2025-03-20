@@ -1,32 +1,49 @@
+import { GeistSans } from 'geist/font/sans';
+import ClientProviders from '@/components/ClientProviders';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import { AnalyticsProviders } from "@/lib/analytics";
-import { AuthProvider } from '@/lib/auth-context'
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: 'swap',
-  preload: true,
-  adjustFontFallback: true,
-  weights: [400, 500, 600, 700],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: 'swap',
-  preload: true,
-  adjustFontFallback: true,
-  weights: [400, 600],
-});
 
 export const metadata: Metadata = {
   title: "Melken TechWork - From Vision to Execution",
   description: "We specialize in transforming complex technical challenges into elegant, efficient solutions for forward-thinking businesses.",
+  metadataBase: new URL('https://melkentech.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Melken TechWork',
+    description: 'From Vision to Execution',
+    url: 'https://melkentech.com',
+    siteName: 'Melken TechWork',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Melken TechWork',
+    description: 'From Vision to Execution',
+    images: ['/images/twitter-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: '/images/favicon.ico',
     shortcut: '/images/favicon.ico',
@@ -36,30 +53,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={GeistSans.className}>
       <head>
-        <link rel="preconnect" href="https://cdn.melkentech.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        <script
-          defer
-          data-domain="melkentech.com"
-          src="https://plausible.io/js/script.js"
-        />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="format-detection" content="telephone=no" />
       </head>
       <body className="antialiased">
-        <AuthProvider>
-          <AnalyticsProviders />
+        <ClientProviders>
           <Navigation />
-          {children}
+          <main className="min-h-screen">
+            {children}
+          </main>
           <Footer />
-        </AuthProvider>
+        </ClientProviders>
       </body>
     </html>
   );

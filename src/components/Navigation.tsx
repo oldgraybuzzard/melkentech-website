@@ -65,6 +65,7 @@ export default function Navigation() {
               height={40}
               priority
               className="w-auto h-8"
+              loading="eager"
             />
           </Link>
 

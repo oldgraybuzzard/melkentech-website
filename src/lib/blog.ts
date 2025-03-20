@@ -82,3 +82,13 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 
   return data as BlogPost
 }
+
+export async function getRelatedPosts(): Promise<BlogPost[]> {
+  try {
+    // TODO: Implement actual related posts logic
+    return [];
+  } catch (error) {
+    console.error('Error fetching related posts:', error);
+    return [];
+  }
+}

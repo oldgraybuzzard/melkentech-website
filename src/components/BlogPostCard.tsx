@@ -1,9 +1,10 @@
-import { memo } from 'react';
-import Image from 'next/image';
+'use client';
+
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { memo, useMemo } from 'react';
+import { getImageSizes, getBlurDataUrl, shouldPrioritize } from '@/lib/image-utils';
 import type { BlogPost } from '@/types/blog';
-import { BLOG_IMAGE_DIMENSIONS } from '@/types/blog';
 
 interface BlogPostCardProps {
   post: BlogPost;
@@ -11,50 +12,39 @@ interface BlogPostCardProps {
 }
 
 const BlogPostCard = memo(function BlogPostCard({ post, index }: BlogPostCardProps) {
+  const imageSizes = useMemo(() => getImageSizes('thumbnail'), []);
+  const blurDataUrl = useMemo(() => getBlurDataUrl(), []);
+  const shouldPrioritizeImage = useMemo(() => shouldPrioritize(index, 'thumbnail'), [index]);
+
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-lg"
-    >
-      <div className="relative aspect-video">
-        <Image
-          src={post.image}
-          alt={post.title}
-          width={BLOG_IMAGE_DIMENSIONS.thumbnailWidth}
-          height={BLOG_IMAGE_DIMENSIONS.thumbnailHeight}
-          className="object-cover"
-          placeholder="blur"
-          blurDataURL={post.imageBlur}
-          loading="lazy"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
-      </div>
-      <div className="p-6">
-        <span className="text-sm text-accent font-semibold">
-          {post.category}
-        </span>
-        <h2 className="text-xl font-bold mt-2 mb-4 text-gray-100">
-          {post.title}
-        </h2>
-        <p className="text-gray-300 mb-4">
-          {post.excerpt}
-        </p>
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-400">
-            {new Date(post.date).toLocaleDateString()}
-          </span>
-          <Link
-            href={`/blog/${post.slug}`}
-            className="text-accent hover:text-accent/80 font-semibold"
-          >
-            Read More →
-          </Link>
+    <Link href={`/blog/${post.slug}`} className="group">
+      <article className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+        <div className="relative aspect-video">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes={imageSizes}
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            priority={shouldPrioritizeImage}
+            placeholder="blur"
+            blurDataURL={blurDataUrl}
+            quality={90}
+          />
         </div>
-      </div>
-    </motion.article>
+        <div className="p-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-sm text-primary dark:text-accent">{post.category}</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">•</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">{post.readingTime} min read</span>
+          </div>
+          <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors duration-300">
+            {post.title}
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 line-clamp-2">{post.excerpt}</p>
+        </div>
+      </article>
+    </Link>
   );
 });
 

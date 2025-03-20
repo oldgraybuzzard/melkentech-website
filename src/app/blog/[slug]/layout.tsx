@@ -1,13 +1,15 @@
-import type { Metadata } from 'next';
-import { getBlogPost } from '@/lib/blog';
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { getBlogPost } from '@/lib/blog'
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getBlogPost(params.slug);
-  
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getBlogPost(slug)
   if (!post) {
     return {
-      title: 'Post Not Found | Melken TechWork Blog',
-    };
+      title: 'Blog Post Not Found',
+      description: 'The requested blog post could not be found.'
+    }
   }
 
   return {
@@ -16,27 +18,39 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: [post.image],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-    },
-  };
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author.name],
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: post.title
+        }
+      ]
+    }
+  }
 }
 
-export default function BlogLayout({
+export default async function BlogPostLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params
+  const post = await getBlogPost(slug)
+  if (!post) {
+    notFound()
+  }
+
   return (
-    <div className="min-h-screen bg-neutral pt-32">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-4xl mx-auto px-4 py-8">
         {children}
       </div>
     </div>
-  );
+  )
 }

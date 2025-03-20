@@ -1,11 +1,38 @@
 @import "tailwindcss";
 
-/* Font loading optimizations */
+/* Optimize font loading */
 @font-face {
   font-family: 'Geist-fallback';
   size-adjust: 97.5%;
   ascent-override: 93%;
   src: local(Arial);
+  font-display: swap;
+}
+
+/* Add performance optimizations */
+:root {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in {
+    will-change: opacity, transform;
+  }
+}
+
+/* Content-visibility optimizations */
+.cv-auto {
+  content-visibility: auto;
+}
+
+/* Optimize paint performance */
+.optimize-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 :root {
