@@ -1,4 +1,5 @@
 import { GeistSans } from 'geist/font/sans';
+import { Analytics } from "@vercel/analytics/react";
 import ClientProviders from '@/components/ClientProviders';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -72,6 +73,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ClientProviders>
+        <Analytics />
       </body>
     </html>
   );
