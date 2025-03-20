@@ -1,8 +1,9 @@
 import { GeistSans } from 'geist/font/sans';
-import { Analytics } from "@vercel/analytics/react";
+import { AnalyticsWrapper } from '@/components/AnalyticsWrapper';
 import ClientProviders from '@/components/ClientProviders';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { CookieConsent } from '@/components/CookieConsent';
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -72,8 +73,9 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <CookieConsent />
         </ClientProviders>
-        <Analytics />
+        <AnalyticsWrapper />
       </body>
     </html>
   );

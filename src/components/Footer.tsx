@@ -112,9 +112,19 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 dark:border-gray-700/20 mt-12 pt-8 text-center">
-          <p className="text-gray-600 dark:text-gray-300 font-medium">
+          <p className="text-gray-600 dark:text-gray-300 font-medium mb-4">
             © {new Date().getFullYear()} Melken TechWork. All rights reserved.
           </p>
+          
+          {/* Legal Links - Moved below the copyright notice */}
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-600 dark:text-gray-400 mt-4">
+            <Link href="/privacy" className="hover:text-primary hover:underline">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-primary hover:underline">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
