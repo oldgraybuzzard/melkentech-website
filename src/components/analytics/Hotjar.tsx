@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react';
 import { loadScript } from '@/lib/script-loader';
 
+type HotjarCommand = (...args: unknown[]) => void;
+
+// Extend Window interface directly
 declare global {
   interface Window {
-    hj?: {
-      q?: any[];
-      (...args: any[]): void;
+    hj?: HotjarCommand & {
+      q?: unknown[];
     };
     _hjSettings?: {
       hjid: string;
@@ -21,11 +23,7 @@ export function Hotjar() {
 
   useEffect(() => {
     const initHotjar = async () => {
-      // Check for window and HTTPS
-      if (
-        typeof window === 'undefined' || 
-        isLoaded
-      ) {
+      if (typeof window === 'undefined' || isLoaded) {
         return;
       }
 
@@ -38,20 +36,17 @@ export function Hotjar() {
       }
 
       try {
-        // Initialize Hotjar settings
         window._hjSettings = {
           hjid: hjid,
           hjsv: hjsv
         };
 
-        // Initialize command queue
-        const hj: { q: any[]; (...args: any[]): void } = function(...args: any[]) {
+        const hj: HotjarCommand & { q?: unknown[] } = function(...args: unknown[]) {
           (hj.q = hj.q || []).push(args);
         };
         hj.q = hj.q || [];
         window.hj = hj;
 
-        // Only load script if we're on HTTPS or localhost
         const isSecure = window.location.protocol === 'https:' || 
                         window.location.hostname === 'localhost' ||
                         window.location.hostname === '127.0.0.1';
@@ -72,7 +67,6 @@ export function Hotjar() {
       }
     };
 
-    // Load Hotjar after a short delay to prioritize core content
     const timeoutId = setTimeout(initHotjar, 2000);
 
     return () => clearTimeout(timeoutId);

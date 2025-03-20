@@ -2,6 +2,7 @@ type ScriptLoadOptions = {
   async?: boolean;
   defer?: boolean;
   strategy?: 'afterInteractive' | 'lazyOnload' | 'worker';
+  attributes?: Record<string, string>;
 };
 
 export const loadScript = (src: string, options: ScriptLoadOptions = {}): Promise<void> => {
