@@ -76,7 +76,7 @@ export default function Services() {
   return (
     <div className="min-h-screen dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] max-h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] max-h-[80vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20">
         {/* Background Image */}
         <Image
           src="/images/services-hero.jpg"

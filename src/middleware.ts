@@ -1,41 +1,47 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { createServerClient } from '@supabase/ssr'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-export function middleware(request: NextRequest) {
-  const response = NextResponse.next();
+export async function middleware(request: NextRequest) {
+  const res = NextResponse.next()
+  
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get: (name) => request.cookies.get(name)?.value,
+        set: (name, value, options) => {
+          res.cookies.set({ name, value, ...options })
+        },
+        remove: (name, options) => {
+          res.cookies.set({ name, value: '', ...options })
+        },
+      },
+    }
+  )
 
-  // Add security headers
-  response.headers.set(
+  // Refresh session if expired - required for Server Components
+  await supabase.auth.getSession()
+
+  // Add your existing security headers
+  res.headers.set(
     'Permissions-Policy',
     'browsing-topics=(), join-ad-interest-group=(), run-ad-auction=(), interest-cohort=(), third-party-cookies=()'
-  );
+  )
 
-  // Add partitioned cookies support
-  response.headers.set('Accept-CH', 'Sec-CH-Partitioned-Cookies');
-  response.headers.set('Critical-CH', 'Sec-CH-Partitioned-Cookies');
-
-  // Handle Turnstile requests
-  if (request.nextUrl.pathname.includes('turnstile')) {
-    response.headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
-    response.headers.set('Cross-Origin-Embedder-Policy', 'credentialless');
-    
-    // Configure cookies for Turnstile
-    const cookieHeader = [
-      'Secure',
-      'Path=/',
-      'SameSite=None',
-      'Partitioned',
-      `Domain=${process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL).hostname : 'localhost'}`
-    ].join('; ');
-    
-    response.headers.set('Set-Cookie', cookieHeader);
-  }
-
-  return response;
+  return res
 }
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    /*
+     * Match all request paths except:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public folder
+     */
+    '/((?!_next/static|_next/image|favicon.ico|public/).*)',
   ],
-}; 
+} 

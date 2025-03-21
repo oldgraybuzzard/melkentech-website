@@ -51,13 +51,15 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className={`fixed w-full backdrop-blur-md z-50 shadow-md ${
-      isDarkMode ? 'bg-gray-900/90' : 'bg-white/90'
-    }`}>
+    <nav 
+      className={`fixed w-full z-50 shadow-md ${
+        isDarkMode ? 'bg-gray-900' : 'bg-white'
+      }`}
+    >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center relative z-10">
+          <Link href="/" className="flex items-center">
             <Image
               src={isDarkMode ? "/logo-white.svg" : "/logo.svg"}
               alt="Melken TechWork Logo"
@@ -75,28 +77,35 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`${isActive(link.href)} transition-colors duration-200 ${
-                  isDarkMode ? '' : 'text-gray-600 hover:text-gray-900'
-                }`}
+                className={`${isActive(link.href)} transition-colors duration-200`}
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Mobile Navigation */}
-          <div className={`md:hidden fixed inset-0 ${
-            isDarkMode ? 'bg-gray-900/95' : 'bg-white/95'
-          } z-50 transform ${
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          } transition-transform duration-300 ease-in-out`}>
-            <div className="flex flex-col items-center justify-center h-full space-y-8">
+          {/* Mobile Navigation - Fixed styling for visibility */}
+          <div 
+            className={`md:hidden fixed top-16 left-0 right-0 bottom-0 ${
+              isDarkMode 
+                ? 'bg-gray-900' 
+                : 'bg-white'
+            } z-40 transform ${
+              isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            } transition-transform duration-300 ease-in-out`}
+          >
+            <div className="flex flex-col items-center w-full bg-opacity-100">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-xl ${isActive(link.href)} transition-colors duration-200 ${
-                    isDarkMode ? '' : 'text-gray-600 hover:text-gray-900'
+                  className={`text-xl py-6 px-6 w-full text-center border-b ${
+                    isDarkMode 
+                      ? 'border-gray-700 text-white hover:bg-gray-800' 
+                      : 'border-gray-100 text-gray-900 hover:bg-gray-50'
+                  } ${pathname === link.href 
+                      ? 'font-bold' 
+                      : 'font-normal'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
