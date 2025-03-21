@@ -69,7 +69,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ClientProviders>
           <Navigation />
-          <main className="min-h-screen pt-16"> {/* Added pt-16 for Navigation height */}
+          <main className="min-h-screen pt-16 md:pt-16 lg:pt-16"> {/* Maintain consistent padding across devices */}
             {children}
           </main>
           <Footer />

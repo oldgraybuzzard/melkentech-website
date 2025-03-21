@@ -1,10 +1,17 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
-import { BLOG_CATEGORIES, CATEGORY_IMAGES, type BlogCategory } from '@/types/blog';
-import { supabase } from '@/lib/supabase';
+import { BLOG_CATEGORIES, type BlogCategory, CATEGORY_IMAGES } from '@/types/blog';
+// import { supabase } from '@/lib/supabase';
+
+// Dynamically import a markdown editor (e.g., @uiw/react-md-editor)
+const MDEditor = dynamic(
+  () => import('@uiw/react-md-editor'),
+  { ssr: false }
+);
 
 export default function NewBlogPost() {
   const router = useRouter();
@@ -15,40 +22,38 @@ export default function NewBlogPost() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  // Redirect if not authenticated
-  if (!loading && !user) {
-    router.push('/admin/login');
-    return null;
-  }
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/admin/login');
+    }
+  }, [user, loading, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
 
-    try {
-      // First verify we have a session
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-      
-      if (sessionError || !session) {
-        throw new Error('No active session - please log in again');
-      }
+    if (!user) {
+      setError('No active session - please log in again');
+      router.push('/admin/login');
+      return;
+    }
 
+    try {
       const categoryImage = CATEGORY_IMAGES[category];
 
       const response = await fetch('/api/blog', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`,
         },
-        credentials: 'include',
         body: JSON.stringify({
           title,
           content,
           category,
           image: categoryImage,
         }),
+        credentials: 'include', // Important: include cookies
       });
 
       if (!response.ok) {
@@ -65,7 +70,7 @@ export default function NewBlogPost() {
     }
   };
 
-  if (loading) {
+  if (loading || !user) {
     return <div>Loading...</div>;
   }
 
@@ -111,17 +116,13 @@ export default function NewBlogPost() {
           </select>
         </div>
 
-        <div>
-          <label htmlFor="content" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
-            Content
-          </label>
-          <textarea
-            id="content"
+        <div className="mb-6">
+          <label className="block text-sm font-medium mb-2">Content</label>
+          <MDEditor
             value={content}
-            onChange={(e) => setContent(e.target.value)}
-            rows={10}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-            required
+            onChange={(value) => setContent(value || '')}
+            preview="edit"
+            height={400}
           />
         </div>
 

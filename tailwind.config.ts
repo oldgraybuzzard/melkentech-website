@@ -10,21 +10,22 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#4B0082',
-          dark: '#2D004D',
+          DEFAULT: 'var(--color-primary)',
+          dark: 'var(--color-primary-dark)',
         },
         secondary: {
-          DEFAULT: '#B084CC',
+          DEFAULT: 'var(--color-secondary)',
         },
         accent: {
-          DEFAULT: '#ACC3A6',
+          DEFAULT: 'var(--color-accent)',
         },
         neutral: {
-          DEFAULT: '#EFEFEF',
+          DEFAULT: 'var(--color-neutral)',
         }
       }
     }
   },
+  darkMode: 'class',
   plugins: [
     require('@tailwindcss/typography'),
   ],

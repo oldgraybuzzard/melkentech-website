@@ -2,7 +2,14 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/lib/auth-context'
 import { useRouter, useParams } from 'next/navigation'
-import { BLOG_CATEGORIES } from '@/types/blog'
+import { BLOG_CATEGORIES, type BlogCategory, CATEGORY_IMAGES } from '@/types/blog'
+import { supabase } from '@/lib/supabase'
+import dynamic from 'next/dynamic'
+
+const MDEditor = dynamic(
+  () => import('@uiw/react-md-editor'),
+  { ssr: false }
+);
 
 export default function EditPostPage() {
   const { user, loading } = useAuth()
@@ -11,10 +18,10 @@ export default function EditPostPage() {
   const id = params?.id as string
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  const [category, setCategory] = useState('')
-  const [image, setImage] = useState<File | null>(null)
+  const [category, setCategory] = useState<BlogCategory>(BLOG_CATEGORIES[0])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     if (!loading && !user) {
@@ -22,13 +29,41 @@ export default function EditPostPage() {
     }
   }, [user, loading, router])
 
+  useEffect(() => {
+    async function fetchPost() {
+      try {
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('id', id)
+          .single()
+
+        if (error) throw error
+
+        if (data) {
+          setTitle(data.title)
+          setContent(data.content)
+          setCategory(data.category as BlogCategory)
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch post')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    if (id) {
+      fetchPost()
+    }
+  }, [id])
+
   function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const newTitle = e.target.value
     setTitle(newTitle)
   }
 
   function handleCategoryChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    const newCategory = e.target.value
+    const newCategory = e.target.value as BlogCategory
     setCategory(newCategory)
   }
 
@@ -37,33 +72,42 @@ export default function EditPostPage() {
     setIsSubmitting(true)
     setError('')
 
-    try {
-      const formData = new FormData()
-      formData.append('title', title)
-      formData.append('content', content)
-      formData.append('category', category)
-      if (image) {
-        formData.append('image', image)
-      }
+    if (!user) {
+      setError('No active session - please log in again')
+      router.push('/admin/login')
+      return
+    }
 
+    try {
       const response = await fetch(`/api/blog/${id}`, {
         method: 'PUT',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          content,
+          category,
+          image: CATEGORY_IMAGES[category],
+        }),
+        credentials: 'include', // Important: include cookies
       })
 
       if (!response.ok) {
-        throw new Error('Failed to update post')
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to update post')
       }
 
       router.push('/admin/posts')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
+      console.error('Update error:', err)
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  if (loading) {
+  if (loading || isLoading) {
     return <div>Loading...</div>
   }
 
@@ -96,49 +140,26 @@ export default function EditPostPage() {
           <select
             value={category}
             onChange={handleCategoryChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
-              focus:border-primary focus:ring-primary sm:text-sm 
-              dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
             required
           >
-            {BLOG_CATEGORIES.map((category) => (
-              <option key={category} value={category}>
-                {category}
+            {BLOG_CATEGORIES.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
               </option>
             ))}
           </select>
         </div>
 
         <div>
-          <label htmlFor="content" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
             Content
           </label>
-          <textarea
-            id="content"
+          <MDEditor
             value={content}
-            onChange={(e) => setContent(e.target.value)}
-            rows={10}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="image" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
-            Image
-          </label>
-          <input
-            type="file"
-            id="image"
-            accept="image/*"
-            onChange={(e) => {
-              if (e.target.files) {
-                setImage(e.target.files[0])
-              }
-            }}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
-              focus:border-primary focus:ring-primary sm:text-sm 
-              dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+            onChange={(value) => setContent(value || '')}
+            preview="edit"
+            height={400}
           />
         </div>
 
@@ -152,7 +173,7 @@ export default function EditPostPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-primary dark:bg-accent text-white px-4 py-2 rounded-md hover:bg-primary-dark dark:hover:bg-accent/90 disabled:opacity-50"
+            className="bg-primary dark:bg-accent text-gray-900 dark:text-gray-900 px-4 py-2 rounded-md hover:bg-primary-dark dark:hover:bg-accent/90 disabled:opacity-50"
           >
             {isSubmitting ? 'Updating...' : 'Update'}
           </button>

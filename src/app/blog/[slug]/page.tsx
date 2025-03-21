@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import { getBlogPost, getRelatedPosts } from '@/lib/blog';
 import { getImageSizes, getBlurDataUrl } from '@/lib/image-utils';
 import BlogPostCard from '@/components/BlogPostCard';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -23,7 +26,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[400px] w-full">
+      <section className="relative h-[60vh] min-h-[400px] w-full mt-8 sm:mt-0">
         <Image
           src={post.image}
           alt={post.title}
@@ -50,8 +53,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Content Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto prose prose-lg dark:prose-invert">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div className="max-w-3xl mx-auto prose prose-lg dark:prose-invert markdown-content">
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
         </div>
       </section>

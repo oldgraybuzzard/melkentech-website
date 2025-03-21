@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <div className="relative bg-gray-900">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] max-h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] max-h-[80vh] flex items-center justify-center overflow-hidden mt-8 sm:mt-0">
         {/* Hero Image */}
         <Image
           src="/images/hero.jpg"

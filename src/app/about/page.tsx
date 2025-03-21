@@ -47,7 +47,7 @@ export default function About() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-primary/90 to-accent/90 overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-primary/90 to-accent/90 overflow-hidden mt-8 sm:mt-0">
         <div className="absolute inset-0">
           <Image
             src="/images/about-hero.jpg"

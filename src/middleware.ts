@@ -3,6 +3,11 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
+  // Block any attempts to access signup endpoints
+  if (request.nextUrl.pathname.startsWith('/auth/sign-up')) {
+    return NextResponse.redirect(new URL('/admin/login', request.url));
+  }
+
   const res = NextResponse.next()
   
   const supabase = createServerClient(

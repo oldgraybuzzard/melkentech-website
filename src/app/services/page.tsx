@@ -76,7 +76,7 @@ export default function Services() {
   return (
     <div className="min-h-screen dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] max-h-[80vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20">
+      <section className="relative min-h-[60vh] max-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <Image
           src="/images/services-hero.jpg"
@@ -88,16 +88,10 @@ export default function Services() {
           loading="eager"
         />
         
-        {/* Darker Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-gray-900/70 to-black/80" />
         
-        {/* Animated Grid Overlay */}
-        <div 
-          className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"
-          style={{ willChange: 'opacity' }}
-        />
-        
-        <div className="container mx-auto px-6 text-center relative z-10">
+        {/* Content container with adjusted padding */}
+        <div className="container mx-auto px-6 text-center relative z-10 pt-20 sm:pt-16"> {/* Added padding top */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
