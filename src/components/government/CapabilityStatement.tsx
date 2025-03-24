@@ -96,7 +96,8 @@ export default function CapabilityStatement() {
             Melken TechWork Capability Statement
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 avoid-break">
+          {/* Company Overview and NAICS section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 avoid-break mb-10">
             <div>
               <h3 className="text-xl font-semibold mb-2">Company Overview</h3>
               <p><strong>Legal Name:</strong> Melken Solutions, LLC<br />
@@ -126,7 +127,8 @@ export default function CapabilityStatement() {
             </div>
           </div>
 
-          <div className="avoid-break">
+          {/* Core Capabilities section */}
+          <div className="avoid-break mt-10">
             <h3 className="text-xl font-semibold mb-2">Core Capabilities</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>

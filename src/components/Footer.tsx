@@ -124,6 +124,13 @@ export default function Footer() {
             <Link href="/terms" className="hover:text-primary hover:underline">
               Terms of Service
             </Link>
+            <Link 
+              href="/admin/login" 
+              className="opacity-50 hover:opacity-100 transition-opacity"
+              aria-label="Employee Login"
+            >
+              Employee
+            </Link>
           </div>
         </div>
       </div>
