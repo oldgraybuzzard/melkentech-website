@@ -132,3 +132,101 @@ code, pre {
 .markdown-content img {
   @apply rounded-lg shadow-lg my-6;
 }
+
+/* Add these styles at the end of your globals.css */
+.pdf-mode {
+  /* Override any problematic colors with web-safe alternatives */
+  --color-primary: #4B0082 !important;
+  --color-primary-dark: #2D004D !important;
+  --color-secondary: #B084CC !important;
+  --color-accent: #ACC3A6 !important;
+  
+  /* Force black text for better PDF rendering */
+  color: #000000 !important;
+  
+  /* Ensure white background */
+  background-color: #ffffff !important;
+  
+  /* Adjust spacing for PDF */
+  padding: 0.5in 0.75in !important;
+  
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.pdf-mode h2 {
+  color: #4B0082 !important;
+  break-after: avoid !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.pdf-mode h3 {
+  break-after: avoid !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.pdf-mode h4 {
+  break-after: avoid !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.pdf-mode ul {
+  break-inside: avoid !important;
+  margin-bottom: 1rem !important;
+}
+
+.pdf-mode li {
+  break-inside: avoid !important;
+}
+
+.pdf-mode .grid {
+  break-inside: avoid !important;
+  display: block !important;
+}
+
+.pdf-mode .grid > div {
+  break-inside: avoid !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Add page break control classes */
+.page-break-before {
+  break-before: page !important;
+}
+
+.page-break-after {
+  break-after: page !important;
+}
+
+.avoid-break {
+  break-inside: avoid !important;
+}
+
+/* Email visibility rules */
+.pdf-only-email {
+  display: none !important;
+}
+
+.pdf-mode .pdf-only-email {
+  display: inline !important;
+}
+
+.pdf-mode .website-only {
+  display: none !important;
+}
+
+/* Phone visibility rules */
+.pdf-only-phone {
+  display: none !important;
+}
+
+.pdf-mode .pdf-only-phone {
+  display: inline !important;
+}
+
+.pdf-mode .website-only-phone {
+  display: none !important;
+}
