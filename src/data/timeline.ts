@@ -56,54 +56,66 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: "9",
+    year: "2021 - 2022",
+    title: "508 Conversion - U.S. Department of Labor",
+    description: "Recreated Microsoft PowerPoint and Adobe PDF documents to ensure full compliance with Section 508 accessibility standards, delivering all materials in both formats."
+  },
+  {
+    id: "10",
     year: "2022",
     title: "GSA Schedule Award Continuation",
     description: "Renewed and expanded our GSA Schedule, ensuring continued federal contract eligibility."
   },
   {
-    id: "10",
+    id: "11",
     year: "2022",
     title: "Transit Protection Training System (TPTS)",
     description: "Providing logistics support services, system integration, installation, and documentation for the TPTS program."
   },
   {
-    id: "11",
+    id: "12",
     year: "2022",
     title: "Onsite Project Management - Norfolk, VA",
     description: "Led a large-scale document scanning and digitization project for the Mid-Atlantic Regional Maintenance Center (MARMC) in Norfolk, VA, ensuring secure handling of contract files and administrative records."
   },
   {
-    id: "12",
+    id: "13",
+    year: "2022 - 2024",
+    title: "Data Entry - U.S. Department of Veterans Affairs",
+    description: "Provided timely and accurate processing of Fee Basis CITC and PC3 consults, ensuring Veteran access to medical care in compliance with national scheduling policies, while coordinating closely with VA medical center staff and escalating complex cases as needed."
+  },
+  {
+    id: "14",
     year: "2023",
     title: "Instructor Operator Handbook for STIGS",
     description: "Developed the Instructor Operator Handbook for the STIGS program, ensuring high-quality training documentation."
   },
   {
-    id: "13",
+    id: "15",
     year: "2023",
     title: "Onsite Project Management - Kaiserslautern, Germany & Belgium",
     description: "Managed a large-scale personnel file digitization project for the Civilian Human Resources Agency (CHRA) in Kaiserslautern, Germany, and Belgium, overseeing secure scanning and quality control processes."
   },
   {
-    id: "14",
+    id: "16",
     year: "2023",
     title: "Technological Innovation & New Markets",
     description: "Expanded into mobile application development, cloud-based solutions, and enterprise technology services."
   },
   {
-    id: "15",
+    id: "17",
     year: "2024",
     title: "Onsite Project Management - Korea",
     description: "Led document digitization and scanning operations for a military project in Korea, ensuring compliance with security regulations and efficient record management."
   },
   {
-    id: "16",
+    id: "18",
     year: "2024",
     title: "SafeStop RV & Airstream Community App Development",
     description: "Launched new consumer-focused apps, demonstrating our ability to blend government, enterprise, and commercial solutions."
   },
   {
-    id: "17",
+    id: "19",
     year: "2025",
     title: "Melken TechWork Rebrand",
     description: "Rebranded as Melken TechWork, reinforcing our expanded capabilities in app development, system integration, and technical solutions."
