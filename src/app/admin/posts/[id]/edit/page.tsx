@@ -41,9 +41,14 @@ export default function EditPostPage() {
         if (error) throw error
 
         if (data) {
-          setTitle(data.title)
-          setContent(data.content)
-          setCategory(data.category as BlogCategory)
+          const post = data as {
+            title: string;
+            content: string;
+            category: string;
+          };
+          setTitle(post.title || '')
+          setContent(post.content || '')
+          setCategory((post.category as BlogCategory) || BLOG_CATEGORIES[0])
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to fetch post')

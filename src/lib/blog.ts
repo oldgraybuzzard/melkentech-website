@@ -43,11 +43,25 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       return [];
     }
 
-    const processedPosts = data.map(post => ({
-      ...post,
-      readingTime: calculateReadingTime(post.content),
-      excerpt: generateExcerpt(post.content),
-    })) as BlogPost[];
+    const processedPosts = data.map(post => {
+      const typedPost = post as {
+        id: string;
+        title: string;
+        slug: string;
+        content: string;
+        date: string;
+        author: { name: string; image?: string };
+        category: string;
+        image: string;
+        tags: string[];
+      };
+      
+      return {
+        ...typedPost,
+        readingTime: calculateReadingTime(typedPost.content),
+        excerpt: generateExcerpt(typedPost.content),
+      };
+    }) as BlogPost[];
 
     // Update cache
     blogPostsCache = {
