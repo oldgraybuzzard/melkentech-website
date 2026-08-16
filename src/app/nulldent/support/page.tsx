@@ -55,7 +55,7 @@ export default function NulldentSupportPage() {
             <h2 className="text-2xl font-bold">Helpful links</h2>
             <ul className="mt-4 space-y-3 text-violet-300">
               <li><Link href="/nulldent" className="hover:underline">Nulldent overview</Link></li>
-              <li><Link href="/privacy" className="hover:underline">Privacy policy</Link></li>
+              <li><Link href="/nulldent/privacy" className="hover:underline">Nulldent privacy policy</Link></li>
               <li><Link href="/contact" className="hover:underline">Contact form</Link></li>
               <li><a href="https://github.com/oldgraybuzzard/nulldent" className="hover:underline">Nulldent on GitHub</a></li>
             </ul>
