@@ -178,7 +178,7 @@ export default function Home() {
               <div className="flex justify-center mb-4">
                 <Image
                   src="/images/ISO 9001.png"
-                  alt="ISO 9001:2015 Certification"
+                  alt="ISO 9001 Certification"
                   width={120}
                   height={120}
                   className="object-contain w-auto h-auto"
@@ -187,7 +187,7 @@ export default function Home() {
                 />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                ISO 9001:2015 Certified
+                ISO 9001 Certified
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
                 Comprehensive quality management system ensuring consistent excellence in service delivery

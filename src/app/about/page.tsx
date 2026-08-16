@@ -98,8 +98,8 @@ export default function About() {
                 government and commercial clients.
               </p>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Our ISO 9001:2015 certification demonstrates our commitment to quality and continuous 
-                improvement, ensuring that every project meets the highest standards of excellence.
+                Our commitment to quality and continuous improvement ensures that every project meets 
+                the highest standards of excellence.
               </p>
             </div>
           </div>

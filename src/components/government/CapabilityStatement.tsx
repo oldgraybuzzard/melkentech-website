@@ -194,7 +194,7 @@ export default function CapabilityStatement() {
           <div className="avoid-break">
             <h3 className="text-xl font-semibold mb-2">Certifications & Compliance</h3>
             <ul className="list-disc list-inside">
-              <li>ISO 9001:2015 certified quality management system</li>
+              <li>Certified quality management system</li>
               <li>CMMC Level 2 compliance readiness</li>
               <li>Agile and ITIL certified practitioners</li>
               <li>Secret Facility Clearance</li>

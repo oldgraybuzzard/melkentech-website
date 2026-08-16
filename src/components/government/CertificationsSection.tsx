@@ -29,7 +29,7 @@ export default function CertificationsSection() {
               />
               <Image
                 src="/images/ISO 9001.png"
-                alt="ISO 9001:2015 Certification"
+                alt="ISO 9001 Certification"
                 width={150}
                 height={150}
                 className="object-contain w-auto h-auto"
