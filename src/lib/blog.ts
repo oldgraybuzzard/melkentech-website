@@ -72,7 +72,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     return processedPosts;
   } catch (error) {
     console.error('Error in getBlogPosts:', error);
-    throw error;
+    return [];
   }
 }
 

@@ -2,7 +2,10 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export async function middleware(request: NextRequest) {
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-anon-key'
+
+export async function proxy(request: NextRequest) {
   // Block any attempts to access signup endpoints
   if (request.nextUrl.pathname.startsWith('/auth/sign-up')) {
     return NextResponse.redirect(new URL('/admin/login', request.url));
@@ -11,8 +14,8 @@ export async function middleware(request: NextRequest) {
   const res = NextResponse.next()
   
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         get: (name: string) => request.cookies.get(name)?.value,
@@ -49,4 +52,4 @@ export const config = {
      */
     '/((?!_next/static|_next/image|favicon.ico|public/).*)',
   ],
-} 
+}

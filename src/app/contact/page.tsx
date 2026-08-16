@@ -60,7 +60,7 @@ export default function ContactPage() {
               transition={{ 
                 duration: 0.5,
                 delay: 0.2,
-                easings: ['easeOut']
+                ease: 'easeOut'
               }}
               style={{ willChange: 'opacity, transform' }}
             >

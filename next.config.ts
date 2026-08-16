@@ -134,7 +134,7 @@ const nextConfig: NextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
-  
+
   // Experimental features
   experimental: {
     // CSS optimization
@@ -148,24 +148,6 @@ const nextConfig: NextConfig = {
       },
     },
     
-    // Turbo pack configuration
-    turbo: {
-      rules: {
-        '*.test.*': ['ignore'],
-        '*.spec.*': ['ignore'],
-        '*.stories.*': ['ignore'],
-        '*.min.*': ['raw'], // Skip processing for minified files
-        '*.bundle.*': ['raw'], // Skip processing for bundled files
-      },
-      loaders: {
-        '.svg': ['@svgr/webpack'],
-        '.png': ['url-loader'],
-        '.jpg': ['url-loader'],
-        '.gif': ['url-loader'],
-        '.woff2': ['url-loader'],
-      },
-    },
-    
     // Additional experimental features
     scrollRestoration: true,
     optimisticClientCache: true,
@@ -176,7 +158,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: [
       'react-dom',
       'framer-motion',
-      '@hotjar/browser',
       '@supabase/supabase-js',
     ],
     webpackBuildWorker: true,

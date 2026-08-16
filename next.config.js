@@ -2,6 +2,10 @@
 const nextConfig = {
   // ... other config options
 
+  turbopack: {
+    root: __dirname,
+  },
+
   headers: async () => {
     return [
       {
