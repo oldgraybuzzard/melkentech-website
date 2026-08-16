@@ -28,7 +28,7 @@ export default function Government() {
         <div className="absolute inset-0">
           <Image
             src="/images/government-hero.jpg"
-            alt="Government Contracting"
+            alt="Government contracting and program support"
             fill
             priority
             quality={90}
@@ -63,7 +63,7 @@ export default function Government() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Trusted partner delivering technical excellence to government agencies
+              Documentation, software, and systems support aligned to government mission requirements.
             </motion.p>
           </motion.div>
         </div>

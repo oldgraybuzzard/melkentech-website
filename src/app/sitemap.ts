@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 import { getBlogPosts } from '@/lib/blog'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://melkentechwork.com'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://melkentech.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
@@ -52,6 +52,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
     },
   ]
 

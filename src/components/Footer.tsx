@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Footer() {
+export function Footer() {
   return (
-    <footer className="py-16 bg-white dark:bg-gray-900">
+    <footer className="py-16 bg-white dark:bg-gray-900" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">Site Footer</h2>
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
@@ -25,14 +26,24 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-600 dark:text-gray-300 font-bold mb-6">
-              Transforming complex technical challenges into elegant, efficient solutions 
-              for forward-thinking businesses.
+              Founder-led consulting and direct accountability for modernization strategy,
+              program execution, and technical delivery.
+            </p>
+            <p className="mb-6">
+              <a
+                href="https://www.linkedin.com/in/kendallfelder"
+                rel="nofollow noopener noreferrer"
+                aria-label="View Kendall D. Felder leadership profile on LinkedIn"
+                className="text-primary dark:text-accent font-semibold underline underline-offset-4 hover:opacity-80 transition-opacity"
+              >
+                Connect with Kendall D. Felder on LinkedIn
+              </a>
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-primary-dark mb-4">Quick Links</h3>
+          <nav aria-label="Footer quick links">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/about" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors font-medium">
@@ -41,7 +52,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/services" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors font-medium">
-                  Services
+                  Consulting
+                </Link>
+              </li>
+              <li>
+                <Link href="/about#leadership" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors font-medium">
+                  Founder Leadership
                 </Link>
               </li>
               <li>
@@ -60,11 +76,11 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Location & Contact */}
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-primary-dark mb-4">Contact</h3>
+          <address className="not-italic">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start text-gray-600 dark:text-gray-300">
                 <svg className="w-5 h-5 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,7 +113,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </address>
 
           {/* Certifications */}
           <div className="col-span-1 md:col-span-4 mt-8">

@@ -5,8 +5,8 @@ import dynamic from 'next/dynamic';
 
 // Pre-load critical text content
 const criticalContent = {
-  title: "Contact Us",
-  subtitle: "We are here to help you with your technical documentation and software development needs."
+  title: "Start a Consulting Conversation",
+  subtitle: "Share your goals and requirements. We will follow up with strategy-through-execution next steps."
 };
 
 // Dynamically import the form component with lower priority
@@ -35,7 +35,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto">
             {/* Optimize critical content rendering */}
-            <h1 
+            <h1
               className="text-4xl font-bold text-center mb-8 dark:text-gray-100"
               style={{ textRendering: 'optimizeLegibility' }}
             >

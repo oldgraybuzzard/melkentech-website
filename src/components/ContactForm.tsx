@@ -14,6 +14,7 @@ interface FormStatus {
 }
 
 export default function ContactForm() {
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -27,11 +28,19 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    if (!turnstileSiteKey) {
+      setStatus({
+        state: 'error',
+        message: 'Security check is unavailable. Please try again later.'
+      });
+      return;
+    }
+
     if (!turnstileToken) {
       setStatus({
         state: 'error',
-        message: 'Please complete the security check'
+        message: 'Please complete the security verification check.'
       });
       return;
     }
@@ -77,10 +86,10 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" autoComplete="off">
+    <form onSubmit={handleSubmit} className="space-y-6" autoComplete="off" aria-describedby="contact-form-help contact-form-status">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
-          Name
+          Name <span aria-hidden="true">*</span>
         </label>
         <input
           type="text"
@@ -100,7 +109,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
-          Email
+          Email <span aria-hidden="true">*</span>
         </label>
         <input
           type="email"
@@ -120,7 +129,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-200">
-          Message
+          Message <span aria-hidden="true">*</span>
         </label>
         <textarea
           id="message"
@@ -138,33 +147,39 @@ export default function ContactForm() {
         />
       </div>
 
-      <div className="turnstile-container" role="group" aria-label="Security Check">
-        <Turnstile
-          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-          onSuccess={setTurnstileToken}
-          onError={() => {
-            setStatus({
-              state: 'error',
-              message: 'Failed to load security check. Please refresh the page.'
-            });
-          }}
-          options={{
-            theme: 'light',
-            size: 'normal',
-            appearance: 'always',
-            retry: 'auto',
-            tabIndex: 0
-          }}
-          id="cf-turnstile"
-        />
-      </div>
+      {turnstileSiteKey ? (
+        <div className="turnstile-container" role="group" aria-label="Security Check">
+          <Turnstile
+            siteKey={turnstileSiteKey}
+            onSuccess={setTurnstileToken}
+            onError={() => {
+              setStatus({
+                state: 'error',
+                message: 'Failed to load security check. Please refresh the page.'
+              });
+            }}
+            options={{
+              theme: 'light',
+              size: 'normal',
+              appearance: 'always',
+              retry: 'auto',
+              tabIndex: 0
+            }}
+            id="cf-turnstile"
+          />
+        </div>
+      ) : (
+        <p className="text-sm text-red-700 dark:text-red-300" role="alert">
+          Security check is currently unavailable.
+        </p>
+      )}
 
       <div>
         <button
           type="submit"
           disabled={status.state === 'submitting'}
           className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md 
-            shadow-sm text-sm font-medium text-gray dark:text-white bg-primary 
+            shadow-sm text-sm font-medium text-white bg-primary 
             hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 
             focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
@@ -172,12 +187,14 @@ export default function ContactForm() {
         </button>
       </div>
 
+      <p id="contact-form-help" className="text-sm text-gray-600 dark:text-gray-300">Fields marked with * are required.</p>
+
       {status.message && (
-        <div className={`text-center p-4 rounded ${
+        <div id="contact-form-status" className={`text-center p-4 rounded ${
           status.state === 'success' 
             ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100' 
             : 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100'
-        }`}>
+        }`} role={status.state === 'error' ? 'alert' : 'status'} aria-live="polite">
           {status.message}
         </div>
       )}

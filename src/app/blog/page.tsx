@@ -46,7 +46,7 @@ export default function Blog() {
         {isLoading ? (
           <BlogSkeleton />
         ) : error ? (
-          <div className="text-center py-12">
+          <div className="text-center py-12" role="alert" aria-live="polite">
             <div className="mb-4 text-red-600 dark:text-red-400">
               {error}
             </div>

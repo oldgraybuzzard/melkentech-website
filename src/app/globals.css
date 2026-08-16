@@ -76,6 +76,42 @@ body {
   font-family: var(--font-geist-sans), 'Geist-fallback', var(--font-fallback);
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 12px;
+  z-index: 100;
+  border-radius: 0.5rem;
+  background: #111827;
+  color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 code, pre {
   font-family: var(--font-geist-mono), 'Courier New', Courier, monospace;
 }

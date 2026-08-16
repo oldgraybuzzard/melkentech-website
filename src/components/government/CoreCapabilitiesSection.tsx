@@ -19,7 +19,7 @@ export default function CoreCapabilitiesSection() {
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                   <li>• S1000D-compliant documentation</li>
                   <li>• Interactive Electronic Technical Manuals (IETMs)</li>
-                  <li>• Military specification compliance</li>
+                  <li>• Military-specification documentation support</li>
                   <li>• Technical data packages</li>
                 </ul>
               </div>
@@ -29,7 +29,7 @@ export default function CoreCapabilitiesSection() {
                   <li>• Custom software development</li>
                   <li>• System integration</li>
                   <li>• Database management</li>
-                  <li>• Cloud solutions (FedRAMP)</li>
+                  <li>• Cloud solution planning for regulated environments</li>
                 </ul>
               </div>
             </div>

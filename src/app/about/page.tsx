@@ -67,7 +67,7 @@ export default function About() {
               About <span className="text-accent">Us</span>
             </h1>
             <p className="text-xl font-bold text-white max-w-2xl mx-auto mb-12">
-              Building the future of technical documentation and software solutions
+              A founder-led consulting company delivering strategy-through-execution modernization support
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
@@ -75,10 +75,10 @@ export default function About() {
                 <StatsCard value="15+" label="Years in Business" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
-                <StatsCard value="50+" label="Successful Projects" />
+                <StatsCard value="Government" label="Delivery Experience" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
-                <StatsCard value="100+" label="Satisfied Clients" />
+                <StatsCard value="Commercial" label="Delivery Experience" />
               </Suspense>
             </div>
           </div>
@@ -92,15 +92,89 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-semibold mb-6 text-gray-900 dark:text-white">Who We Are</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Melken TechWork is a leading provider of technical documentation, software solutions, 
-                and training systems integration. With over 15 years of experience, we&apos;ve built a 
-                reputation for delivering high-quality solutions that meet the complex needs of 
-                government and commercial clients.
+                Melken TechWork is a founder-led consulting company supporting government and commercial organizations
+                with modernization strategy, program execution, and hands-on delivery.
               </p>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Our commitment to quality and continuous improvement ensures that every project meets 
-                the highest standards of excellence.
+                Our consulting model combines advisory planning with implementation leadership across
+                technical documentation, software modernization, systems integration, and training delivery.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
+      <section id="leadership" className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-semibold mb-6 text-center text-gray-900 dark:text-white">Founder Leadership</h2>
+            <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
+              <h3 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">Kendall D. Felder</h3>
+              <p className="text-primary dark:text-accent font-semibold mb-4">President, CEO &amp; Founder</p>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Melken TechWork is led by Kendall D. Felder, providing founder-led direction for consulting,
+                modernization strategy, and delivery execution across engagements.
+              </p>
+              <p className="text-gray-600 dark:text-gray-300">
+                This operating model is built on principal-level attention and direct accountability,
+                ensuring continuity from initial strategy through implementation.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-4">
+                <a
+                  href="https://www.linkedin.com/in/kendallfelder"
+                  rel="nofollow noopener noreferrer"
+                  aria-label="View Kendall D. Felder leadership profile on LinkedIn"
+                  className="text-primary dark:text-accent font-semibold underline underline-offset-4 hover:opacity-80 transition-opacity"
+                >
+                  View Kendall D. Felder on LinkedIn
+                </a>
+                <a
+                  href="/contact"
+                  className="text-gray-700 dark:text-gray-200 font-semibold hover:underline underline-offset-4"
+                >
+                  Start a consulting conversation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Operating Model Section */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-semibold mb-6 text-center text-gray-900 dark:text-white">How We Operate Today</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Discovery to Delivery</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  We align priorities early, define delivery milestones, and execute in focused increments
+                  that reduce risk while producing visible progress.
+                </p>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Secure by Design</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Security, compliance readiness, and reliability are built into implementation,
+                  not bolted on after release.
+                </p>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Operational Fit</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  We build solutions around real workflows so teams can adopt quickly and sustain results
+                  across mission and business operations.
+                </p>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Principal-Level Accountability</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Founder-led oversight keeps strategy and execution aligned,
+                  with direct accountability throughout planning, delivery, and sustainment.
+                </p>
+              </div>
             </div>
           </div>
         </div>

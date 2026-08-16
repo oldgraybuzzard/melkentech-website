@@ -14,9 +14,9 @@ export default function CertificationsSection() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Classifications</h2>
+            <h2 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">Operating Profile</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-8">
-              Small Business | Service-Disabled Veteran-Owned Small Business (SDVOSB)
+              Small Business | Service-Disabled Veteran-Owned Small Business (SDVOSB) | Mission-Focused Delivery
             </p>
             <div className="flex justify-center items-center gap-8">
               <Image
@@ -39,7 +39,7 @@ export default function CertificationsSection() {
           >
             {/* Contract Details */}
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Contract Information</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Contracting Snapshot</h3>
               <ul className="space-y-4">
                 <li>
                   <span className="font-bold block text-gray-900 dark:text-white">CAGE Code:</span>
@@ -62,7 +62,7 @@ export default function CertificationsSection() {
 
             {/* Additional NAICS */}
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Additional NAICS Codes</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Service Capability Codes</h3>
               <ul className="space-y-4">
                 <li>
                   <span className="font-mono text-gray-700 dark:text-gray-300">518210</span>

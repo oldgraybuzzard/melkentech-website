@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
@@ -28,10 +29,10 @@ export function CookieConsent() {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gray-900 dark:bg-gray-800 p-4 shadow-lg z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-gray-900 dark:bg-gray-800 p-4 shadow-lg z-50" role="dialog" aria-live="polite" aria-label="Cookie consent banner">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-white dark:text-gray-300">
-          We use cookies and analytics to improve your experience. By continuing to use this site, you agree to our use of cookies and data collection. See our <a href="/privacy" className="underline hover:text-primary">Privacy Policy</a> for more information.
+          We use cookies and analytics to improve your experience. By continuing to use this site, you agree to our use of cookies and data collection. See our <Link href="/privacy" className="underline hover:text-primary">Privacy Policy</Link> for more information.
         </p>
         <div className="flex gap-4">
           <button

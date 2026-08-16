@@ -29,6 +29,23 @@ export default function Navigation() {
   const isDarkMode = useDarkMode();
   const pathname = usePathname();
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -48,7 +65,7 @@ export default function Navigation() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/services', label: 'Services' },
+    { href: '/services', label: 'Consulting' },
     { href: '/government', label: 'Government' },
     { href: '/nulldent', label: 'Nulldent' },
     { href: '/blog', label: 'Blog' },
@@ -56,7 +73,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav 
+    <header
       className={`fixed w-full z-50 shadow-md ${
         isDarkMode ? 'bg-gray-900' : 'bg-white'
       }`}
@@ -77,24 +94,27 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <nav aria-label="Primary" className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`${isActive(link.href)} transition-colors duration-200`}
+                aria-current={pathname === link.href ? 'page' : undefined}
               >
                 {link.label}
               </Link>
             ))}
-          </div>
+          </nav>
 
           {/* Mobile Navigation */}
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+              className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600 p-2"
               aria-label="Toggle menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
             >
               {isOpen ? (
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -110,23 +130,36 @@ export default function Navigation() {
 
           {/* Mobile Menu */}
           {isOpen && (
-            <div className="absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`${isActive(link.href)} block px-3 py-2 text-base`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <>
+              <button
+                type="button"
+                aria-label="Close mobile menu"
+                className="fixed inset-0 top-16 bg-black/30 md:hidden"
+                onClick={() => setIsOpen(false)}
+              />
+              <nav
+                id="mobile-navigation"
+                aria-label="Mobile"
+                className="absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg md:hidden"
+              >
+                <div className="px-2 pt-2 pb-3 space-y-1">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`${isActive(link.href)} block px-3 py-3 text-base`}
+                      onClick={() => setIsOpen(false)}
+                      aria-current={pathname === link.href ? 'page' : undefined}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </nav>
+            </>
           )}
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

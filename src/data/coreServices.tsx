@@ -15,7 +15,7 @@ export interface CoreService {
 const coreServices: CoreService[] = [
   {
     title: "Technical Documentation",
-    description: "Industry-leading documentation solutions leveraging modern standards and rigorous quality processes.",
+    description: "Modern documentation programs that improve readiness, reduce ambiguity, and support lifecycle sustainment.",
     icon: (
       <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -27,15 +27,15 @@ const coreServices: CoreService[] = [
         items: [
           "S1000D-compliant documentation",
           "Interactive Electronic Technical Manuals (IETMs)",
-          "Military specification compliance",
-          "Technical data packages"
+          "Technical data package development",
+          "Controlled revisions and governance"
         ]
       }
     ]
   },
   {
     title: "Custom Software Development",
-    description: "Enterprise-grade software solutions tailored to your specific needs.",
+    description: "Secure, scalable software systems delivered for operational reliability and long-term maintainability.",
     icon: (
       <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -49,14 +49,14 @@ const coreServices: CoreService[] = [
           "Mobile app development",
           "Legacy system modernization",
           "API development and integration",
-          "Database design and optimization"
+          "Performance and resilience engineering"
         ]
       }
     ]
   },
   {
     title: "Training Systems Integration",
-    description: "Advanced training solutions for complex technical environments.",
+    description: "Integrated training environments that increase proficiency, readiness, and measurable performance outcomes.",
     icon: (
       <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />

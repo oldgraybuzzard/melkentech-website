@@ -184,10 +184,10 @@ export default function CapabilityStatement() {
           <div className="avoid-break">
             <h3 className="text-xl font-semibold mb-2">Past Performance Highlights</h3>
             <ul className="list-disc list-inside">
-              <li>U.S. Navy: Developed and maintained technical documentation system supporting fleet operations</li>
-              <li>Department of Justice: Implemented secure document management and workflow solutions</li>
-              <li>Cubic Defense: Delivered integrated training systems and documentation for military programs</li>
-              <li>Multiple federal agencies: Provided software development and system modernization services</li>
+              <li>U.S. Navy support efforts: Technical documentation and fleet-oriented content delivery support</li>
+              <li>Department of Justice support efforts: Document management and workflow implementation support</li>
+              <li>Cubic Defense support efforts: Training-system documentation and integration support</li>
+              <li>Federal program support: Software development and system modernization contributions</li>
             </ul>
           </div>
 
@@ -195,22 +195,22 @@ export default function CapabilityStatement() {
             <h3 className="text-xl font-semibold mb-2">Certifications & Compliance</h3>
             <ul className="list-disc list-inside">
               <li>Certified quality management system</li>
-              <li>CMMC Level 2 compliance readiness</li>
+              <li>CMMC Level 2 alignment planning (as required by contract scope)</li>
               <li>Agile and ITIL certified practitioners</li>
-              <li>Secret Facility Clearance</li>
-              <li>PMP certified project managers</li>
+              <li>Security and clearance coordination experience for government programs</li>
+              <li>PMP-informed project management practices</li>
             </ul>
           </div>
 
           <div className="avoid-break">
             <h3 className="text-xl font-semibold mb-2">Differentiators</h3>
             <ul className="list-disc list-inside">
-              <li>Veteran-Owned Small Business with proven federal contracting experience</li>
-              <li>Full lifecycle support from requirements analysis to maintenance</li>
-              <li>Rapid deployment capabilities for CONUS and OCONUS operations</li>
-              <li>Integrated solutions combining documentation, software, and training</li>
-              <li>Strong past performance with federal agencies and prime contractors</li>
-              <li>Expertise in military and government system compliance</li>
+              <li>Veteran-Owned Small Business with federal and prime-contractor program experience</li>
+              <li>Outcome-driven execution model from discovery through sustainment</li>
+              <li>Operationally aligned delivery for CONUS and OCONUS environments</li>
+              <li>Integrated modernization across documentation, software, and training systems</li>
+              <li>Security-aware implementation with governance-ready reporting practices</li>
+              <li>Cross-sector experience that accelerates adoption of proven delivery methods</li>
             </ul>
           </div>
 

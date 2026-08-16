@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: 'Terms and conditions for using Melken TechWork services.',
 };
 
+const LAST_UPDATED = 'August 16, 2026';
+
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
@@ -69,7 +71,7 @@ export default function TermsPage() {
             <hr className="my-8 border-gray-200 dark:border-gray-700" />
 
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Last updated: {new Date().toLocaleDateString()}
+              Last updated: {LAST_UPDATED}
             </p>
           </div>
         </div>

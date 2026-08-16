@@ -99,8 +99,8 @@ export const timelineItems: TimelineItem[] = [
   {
     id: "16",
     year: "2023",
-    title: "Technological Innovation & New Markets",
-    description: "Expanded into mobile application development, cloud-based solutions, and enterprise technology services."
+    title: "Expansion into Modern Delivery Platforms",
+    description: "Expanded execution capabilities across mobile, cloud-native, and enterprise modernization initiatives."
   },
   {
     id: "17",
@@ -111,13 +111,13 @@ export const timelineItems: TimelineItem[] = [
   {
     id: "18",
     year: "2024",
-    title: "SafeStop RV & Airstream Community App Development",
-    description: "Launched new consumer-focused apps, demonstrating our ability to blend government, enterprise, and commercial solutions."
+    title: "Cross-Sector Product Delivery",
+    description: "Delivered production applications that demonstrate repeatable delivery practices across government, enterprise, and commercial sectors."
   },
   {
     id: "19",
     year: "2025",
-    title: "Melken TechWork Rebrand",
-    description: "Rebranded as Melken TechWork, reinforcing our expanded capabilities in app development, system integration, and technical solutions."
+    title: "Melken TechWork Operating Model",
+    description: "Rebranded and aligned operations around secure modernization, lifecycle support, and measurable delivery outcomes."
   }
 ];

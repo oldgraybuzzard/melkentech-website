@@ -104,8 +104,8 @@ export default function Services() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Comprehensive{' '}
-              <span className="text-accent">Solutions</span>
+              Founder-Led{' '}
+              <span className="text-accent">Consulting</span>
             </motion.h1>
             
             <motion.p 
@@ -118,8 +118,8 @@ export default function Services() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Industry-leading documentation, software solutions, and training systems 
-              that drive innovation and efficiency
+              Advisory, modernization strategy, program execution, and hands-on delivery
+              for government and commercial operations.
             </motion.p>
 
             <motion.div
@@ -130,13 +130,13 @@ export default function Services() {
             >
               {/* Stats Cards */}
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
-                <StatsCard value="24/7" label="Support Available" />
+                <StatsCard value="Lifecycle" label="Delivery Support" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
                 <StatsCard value="15+" label="Years Experience" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
-                <StatsCard value="100%" label="Client Satisfaction" />
+                <StatsCard value="Federal + Commercial" label="Delivery Experience" />
               </Suspense>
             </motion.div>
           </motion.div>
@@ -174,11 +174,11 @@ export default function Services() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-accent mb-6">
-              Our Services
+              Consulting Capabilities
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-lg">
-              Comprehensive technical solutions tailored to modern business needs,
-              with special expertise in S1000D documentation and training systems.
+              Melken TechWork combines principal-level consulting with technical execution across
+              documentation, software modernization, systems integration, and training programs.
             </p>
           </motion.div>
 
@@ -195,16 +195,17 @@ export default function Services() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary dark:text-white">
-              Ready to Transform Your Business?
+              Ready for Strategy-Through-Execution Support?
             </h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-600 dark:text-white/90">
-              Let&apos;s discuss how our comprehensive solutions can help you achieve your goals.
+              Partner with a founder-led team to define priorities, execute with accountability,
+              and sustain measurable outcomes.
             </p>
             <Link
               href="/contact"
               className="inline-block bg-accent hover:bg-accent/90 text-primary-dark dark:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
             >
-              Schedule a Consultation
+              Start a Consulting Conversation
             </Link>
           </motion.div>
         </div>

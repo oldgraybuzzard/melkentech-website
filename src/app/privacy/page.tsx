@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: 'Our commitment to protecting your privacy and personal information.',
 };
 
+const LAST_UPDATED = 'August 16, 2026';
+
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
@@ -38,7 +40,7 @@ export default function PrivacyPage() {
             <ul className="list-disc pl-6 mb-6">
               <li>Providing and improving our services to meet your needs.</li>
               <li>Communicating with you about updates, offers, and promotions.</li>
-              <li>Analyzing website usage and trends to enhance the performance of the websit and user experience.</li>
+              <li>Analyzing website usage and trends to enhance website performance and user experience.</li>
               <li>Protecting our rights, property, and safety, as well as the rights, property, and safety of our users and others.</li>
             </ul>
 
@@ -82,7 +84,7 @@ export default function PrivacyPage() {
             <hr className="my-8 border-gray-200 dark:border-gray-700" />
 
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Last updated: {new Date().toLocaleDateString()}
+              Last updated: {LAST_UPDATED}
             </p>
           </div>
         </div>

@@ -13,8 +13,8 @@ const blurDataUrls = {
 // Preload critical content
 const preloadText = {
   hero: {
-    title: "From Vision to Execution",
-    subtitle: "We specialize in transforming complex technical challenges into elegant, efficient solutions for forward-thinking businesses."
+    title: "Founder-Led Consulting",
+    subtitle: "Melken TechWork provides strategy-through-execution consulting for government and commercial teams modernizing documentation, software, and training systems."
   }
 };
 
@@ -75,10 +75,46 @@ export default function Home() {
             href="/contact"
             className="inline-block bg-accent hover:bg-accent/90 text-primary-dark px-8 py-3 rounded-full font-semibold transition-colors"
           >
-            Get Started
+            Schedule a Consultation
           </Link>
         </div>
       </section>
+
+      {/* Leadership Section */}
+      <motion.section
+        {...fadeInUp}
+        className="py-16 bg-white dark:bg-gray-900"
+        style={{ containIntrinsicSize: '0 280px' }}
+      >
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-accent mb-6">
+              Leadership and Accountability
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 text-lg mb-6">
+              Melken TechWork is founder-led by Kendall D. Felder, President, CEO &amp; Founder.
+              Engagements are guided with principal-level attention, direct accountability,
+              and practical decision-making from strategy through execution.
+            </p>
+            <p className="mb-6">
+              <a
+                href="https://www.linkedin.com/in/kendallfelder"
+                rel="nofollow noopener noreferrer"
+                aria-label="View Kendall D. Felder leadership profile on LinkedIn"
+                className="text-primary dark:text-accent font-semibold underline underline-offset-4 hover:opacity-80 transition-opacity"
+              >
+                View Kendall D. Felder on LinkedIn
+              </a>
+            </p>
+            <Link
+              href="/about#leadership"
+              className="inline-block bg-primary hover:bg-primary-dark text-white px-7 py-3 rounded-full font-semibold transition-colors"
+            >
+              Meet Leadership
+            </Link>
+          </div>
+        </div>
+      </motion.section>
 
       {/* Services Section */}
       <motion.section
@@ -94,11 +130,11 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-accent mb-6">
-              Our Services
+              Consulting Capabilities
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-lg">
-              Comprehensive technical solutions tailored to modern business needs,
-              with special expertise in S1000D documentation and training systems.
+              Consulting, advisory planning, modernization strategy, program execution,
+              and hands-on delivery under a single operating model.
             </p>
           </motion.div>
           
@@ -145,16 +181,17 @@ export default function Home() {
       >
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary dark:text-white">
-            Ready to Transform Your Business?
+            Need Founder-Led Guidance on Your Next Initiative?
           </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-600 dark:text-white/90">
-            Let&apos;s discuss how we can help you achieve your technology goals.
+            Work directly with a founder-led team to align modernization strategy,
+            execution priorities, and delivery outcomes.
           </p>
           <Link
             href="/contact"
             className="inline-block bg-accent hover:bg-accent/90 text-primary-dark dark:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
           >
-            Schedule a Consultation
+            Request a Consultation
           </Link>
         </div>
       </motion.section>
@@ -190,7 +227,8 @@ export default function Home() {
                 Service-Disabled Veteran-Owned
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                We&apos;re here to help you with your technical documentation and software development needs.
+                Founder-led consulting with direct accountability for disciplined,
+                mission-aligned execution.
               </p>
             </motion.div>
           </div>
@@ -203,13 +241,13 @@ export default function Home() {
 const services = [
   {
     title: "Technical Documentation & IETMs",
-    description: "Industry-leading documentation solutions leveraging S1000D, XML, and IETM standards. We specialize in:",
+    description: "Consulting-led documentation modernization for accuracy, maintainability, and mission readiness:",
     features: [
       "S1000D-compliant technical publications",
       "Interactive Electronic Technical Manuals (IETMs)",
       "XML-based documentation systems",
-      "Military specification compliance",
-      "Configuration management"
+      "Configuration and revision control",
+      "Fleet and field-ready delivery workflows"
     ],
     icon: (
       <svg className="w-6 h-6 text-primary dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -220,13 +258,13 @@ const services = [
   },
   {
     title: "Custom Software Development",
-    description: "Enterprise-grade software solutions tailored to your specific needs:",
+    description: "Advisory and hands-on software modernization focused on operational outcomes:",
     features: [
       "Full-stack web applications",
       "Mobile app development",
       "Legacy system modernization",
       "API development and integration",
-      "Database design and optimization"
+      "Cloud-ready architecture and observability"
     ],
     icon: (
       <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -236,7 +274,7 @@ const services = [
   },
   {
     title: "Training Systems Integration",
-    description: "Advanced training solutions for complex technical environments:",
+    description: "Strategy-through-execution support for integrated training ecosystems:",
     features: [
       "Interactive training simulations",
       "VR/AR training experiences",
@@ -252,13 +290,13 @@ const services = [
   },
   {
     title: "Project Management",
-    description: "Comprehensive project oversight with industry best practices:",
+    description: "Program leadership with principal-level attention and transparent execution governance:",
     features: [
       "Agile and traditional methodologies",
       "Risk management",
       "Resource allocation",
-      "Quality assurance",
-      "Stakeholder communication"
+      "Quality and acceptance management",
+      "Stakeholder reporting and governance"
     ],
     icon: (
       <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -268,7 +306,7 @@ const services = [
   },
   {
     title: "Cloud Solutions",
-    description: "Modern cloud infrastructure and services:",
+    description: "Modernization strategy and delivery planning for resilient, secure cloud adoption:",
     features: [
       "Cloud migration strategies",
       "Serverless architecture",
