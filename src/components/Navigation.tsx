@@ -34,7 +34,7 @@ export default function Navigation() {
   };
 
   const isActive = (path: string) => {
-    const active = pathname === path;
+    const active = pathname === path || (path !== '/' && pathname.startsWith(`${path}/`));
     if (active) {
       return isDarkMode 
         ? 'text-white font-bold' 
@@ -50,6 +50,7 @@ export default function Navigation() {
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
     { href: '/government', label: 'Government' },
+    { href: '/nulldent', label: 'Nulldent' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
   ];

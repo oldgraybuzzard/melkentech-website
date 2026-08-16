@@ -45,6 +45,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/nulldent" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors font-medium">
+                  Nulldent
+                </Link>
+              </li>
+              <li>
+                <Link href="/nulldent/support" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors font-medium">
+                  Nulldent Support
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors font-medium">
                   Contact
                 </Link>
@@ -94,7 +104,7 @@ export default function Footer() {
             <div className="flex flex-wrap justify-center gap-8 items-center border-t border-gray-200 dark:border-gray-700/10 pt-8">
               <Image
                 src="/images/ISO 9001.png"
-                alt="ISO 9001:2015 Certification"
+                alt="ISO 9001 Certification"
                 width={100}
                 height={100}
                 className="object-contain w-auto h-auto"
