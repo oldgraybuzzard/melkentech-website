@@ -27,14 +27,6 @@ export default function CertificationsSection() {
                 className="object-contain"
                 loading="lazy"
               />
-              <Image
-                src="/images/ISO 9001.png"
-                alt="ISO 9001 Certification"
-                width={150}
-                height={150}
-                className="object-contain w-auto h-auto"
-                loading="lazy"
-              />
             </div>
           </motion.div>
 

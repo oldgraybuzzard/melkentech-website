@@ -133,7 +133,7 @@ export default function Services() {
                 <StatsCard value="24/7" label="Support Available" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
-                <StatsCard value="ISO" label="9001:2015 Certified" />
+                <StatsCard value="15+" label="Years Experience" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
                 <StatsCard value="100%" label="Client Satisfaction" />

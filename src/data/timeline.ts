@@ -51,8 +51,8 @@ export const timelineItems: TimelineItem[] = [
   {
     id: "8",
     year: "2021",
-    title: "ISO Certification Achieved",
-    description: "Achieved ISO certification, reinforcing our commitment to quality, efficiency, and continuous improvement."
+    title: "Quality Program Milestone",
+    description: "Advanced internal quality practices to reinforce efficiency, consistency, and continuous improvement."
   },
   {
     id: "9",

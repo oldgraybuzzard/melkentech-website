@@ -103,13 +103,6 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-4 mt-8">
             <div className="flex flex-wrap justify-center gap-8 items-center border-t border-gray-200 dark:border-gray-700/10 pt-8">
               <Image
-                src="/images/ISO 9001.png"
-                alt="ISO 9001 Certification"
-                width={100}
-                height={100}
-                className="object-contain w-auto h-auto"
-              />
-              <Image
                 src="/images/sdvosb.jpg"
                 alt="SDVOSB Certification"
                 width={100}
