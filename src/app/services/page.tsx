@@ -136,7 +136,7 @@ export default function Services() {
                 <StatsCard value="15+" label="Years Experience" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
-                <StatsCard value="Federal + Commercial" label="Delivery Experience" />
+                <StatsCard value="Federal + Commercial" label="Delivery Experience" valueClassName="text-2xl sm:text-3xl" />
               </Suspense>
             </motion.div>
           </motion.div>

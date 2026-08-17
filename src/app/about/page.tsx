@@ -75,10 +75,10 @@ export default function About() {
                 <StatsCard value="15+" label="Years in Business" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
-                <StatsCard value="Government" label="Delivery Experience" />
+                <StatsCard value="Government" label="Delivery Experience" valueClassName="text-3xl sm:text-4xl" />
               </Suspense>
               <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-24 rounded-lg"></div>}>
-                <StatsCard value="Commercial" label="Delivery Experience" />
+                <StatsCard value="Commercial" label="Delivery Experience" valueClassName="text-3xl sm:text-4xl" />
               </Suspense>
             </div>
           </div>
