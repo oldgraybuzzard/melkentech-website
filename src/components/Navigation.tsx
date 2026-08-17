@@ -67,10 +67,13 @@ export default function Navigation() {
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Consulting' },
     { href: '/government', label: 'Government' },
-    { href: '/nulldent', label: 'Nulldent' },
+    { href: '/apps', label: 'Apps' },
     { href: '/blog', label: 'Blog' },
     { href: '/contact', label: 'Contact' },
   ];
+
+  const isCurrentPage = (path: string) =>
+    pathname === path || (path !== '/' && pathname.startsWith(`${path}/`));
 
   return (
     <header
@@ -100,7 +103,7 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={`${isActive(link.href)} transition-colors duration-200`}
-                aria-current={pathname === link.href ? 'page' : undefined}
+                aria-current={isCurrentPage(link.href) ? 'page' : undefined}
               >
                 {link.label}
               </Link>
@@ -149,7 +152,7 @@ export default function Navigation() {
                       href={link.href}
                       className={`${isActive(link.href)} block px-3 py-3 text-base`}
                       onClick={() => setIsOpen(false)}
-                      aria-current={pathname === link.href ? 'page' : undefined}
+                      aria-current={isCurrentPage(link.href) ? 'page' : undefined}
                     >
                       {link.label}
                     </Link>

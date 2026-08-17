@@ -61,8 +61,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/nulldent" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors font-medium">
-                  Nulldent
+                <Link href="/apps" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors font-medium">
+                  Apps
                 </Link>
               </li>
               <li>
