@@ -38,7 +38,14 @@ export default function NulldentPage() {
               Nulldent is a fast, focused, keyboard-first text and code editor with the tools developers need—and none of the noise they do not.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <span className="rounded-full bg-violet-500 px-6 py-3 font-semibold text-white">Coming to the Mac App Store</span>
+              <a
+                href="https://apps.apple.com/us/app/nulldent/id6798079481?mt=12"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-violet-500 px-6 py-3 font-semibold text-white transition hover:bg-violet-400"
+              >
+                Download on the Mac App Store
+              </a>
               <Link href="/nulldent/support" className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:border-violet-300 hover:bg-white/5">
                 Support &amp; help
               </Link>

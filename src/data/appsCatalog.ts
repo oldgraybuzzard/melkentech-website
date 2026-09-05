@@ -63,6 +63,15 @@ export const appCatalog: AppCatalogItem[] = [
       href: '/nulldent',
       external: false,
     },
+    downloads: [
+      {
+        label: 'Download on the Mac App Store',
+        link: {
+          href: 'https://apps.apple.com/us/app/nulldent/id6798079481?mt=12',
+          external: true,
+        },
+      },
+    ],
     support: {
       href: '/nulldent/support',
       external: false,
