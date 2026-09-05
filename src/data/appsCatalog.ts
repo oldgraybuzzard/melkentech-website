@@ -31,6 +31,28 @@ export type AppCatalogItem = {
 
 export const appCatalog: AppCatalogItem[] = [
   {
+    id: 'automacit',
+    name: 'AutoMacIt',
+    summary: 'A private, native macOS productivity app for saving reusable snippets and automating repetitive work.',
+    ownershipType: 'melken-product',
+    deployment: 'internal',
+    primaryActionLabel: 'View AutoMacIt',
+    product: {
+      href: '/automacit',
+      external: false,
+    },
+    support: {
+      href: '/automacit/support',
+      external: false,
+    },
+    privacy: {
+      href: '/automacit/privacy',
+      external: false,
+    },
+    operatingSystems: ['macOS'],
+    applicationCategory: 'ProductivityApplication',
+  },
+  {
     id: 'nulldent',
     name: 'Nulldent',
     summary: 'A fast, focused, keyboard-first text and code editor for macOS.',

@@ -10,12 +10,12 @@ const toAbsoluteUrl = (href: string) =>
 export const metadata: Metadata = {
   title: 'Apps',
   description:
-    'Explore Melken TechWork products and client app work, including Nulldent for macOS, SafeStop RV for iOS and Android, and the ACI Member App for iOS and Android.',
+    'Explore Melken TechWork products and client app work, including AutoMacIt and Nulldent for macOS, SafeStop RV, and the ACI Member App.',
   alternates: { canonical: '/apps' },
   openGraph: {
     title: 'Apps | Melken TechWork',
     description:
-      'Explore Melken TechWork products and client app work: Nulldent, SafeStop RV, and the ACI Member App.',
+      'Explore Melken TechWork products and client app work: AutoMacIt, Nulldent, SafeStop RV, and the ACI Member App.',
     url: '/apps',
     type: 'website',
   },
